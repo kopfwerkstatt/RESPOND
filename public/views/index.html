@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>RESPOND - a Responsive Web Framework for Device Specific UX</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="a Responsive Web Framework for Device Specific User Experience">
+    <meta name="author" content="Christoph Pömer">
+    <link rel="icon" href="{{# img }}favicon.ico{{/ img }}">
+
+    <!-- link to partials located in device-specific folders -->
+    {{> icons }}
+    {{> viewport }}
+
+    <!--
+          ___           ___           ___           ___           ___           ___           ___
+         /\  \         /\  \         /\  \         /\  \         /\  \         /\__\         /\  \
+        /::\  \       /::\  \       /::\  \       /::\  \       /::\  \       /::|  |       /::\  \
+       /:/\:\  \     /:/\:\  \     /:/\ \  \     /:/\:\  \     /:/\:\  \     /:|:|  |      /:/\:\  \
+      /::\~\:\  \   /::\~\:\  \   _\:\~\ \  \   /::\~\:\  \   /:/  \:\  \   /:/|:|  |__   /:/  \:\__\
+     /:/\:\ \:\__\ /:/\:\ \:\__\ /\ \:\ \ \__\ /:/\:\ \:\__\ /:/__/ \:\__\ /:/ |:| /\__\ /:/__/ \:|__|
+     \/_|::\/:/  / \:\~\:\ \/__/ \:\ \:\ \/__/ \/__\:\/:/  / \:\  \ /:/  / \/__|:|/:/  / \:\  \ /:/  /
+        |:|::/  /   \:\ \:\__\    \:\ \:\__\        \::/  /   \:\  /:/  /      |:/:/  /   \:\  /:/  /
+        |:|\/__/     \:\ \/__/     \:\/:/  /         \/__/     \:\/:/  /       |::/  /     \:\/:/  /
+        |:|  |        \:\__\        \::/  /                     \::/  /        /:/  /       \::/__/
+         \|__|         \/__/         \/__/                       \/__/         \/__/         ~~
+
+    <3 Created with love in Austria - by Christoph Pömer
+
+    -->
+
+    {{# addFrameworkJS }} <!-- Inserts the necessary Framework JS Files automatically--> {{/ addFrameworkJS }}
+
+    <!-- include Stylesheet from assets directory -->
+    {{# css }}style.min.css{{/ css }}
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body class="unresponsive">
+
+<header id="header">
+
+    <div class="container">
+        <!-- link to partials located in device-specific folders -->
+        {{> logo }}
+        <nav>
+            <a href="#" id="menu-icon"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a>
+            <ul>
+                <li class="is-selected"><a href="#"><b>Home</b></a></li>
+                <li><a href="#about"><b>About</b></a></li>
+                <li><a href="#example"><b>Examples</b></a></li>
+                <li><a href="#download"><b>Download</b></a></li>
+            </ul>
+        </nav>
+    </div>
+
+</header>
+
+<!-- Header Section -->
+<section id="carousel">
+    {{> carousel }}
+    {{> animation }}
+</section>
+
+<section id="content">
+
+    <div class="container-fluid marketing is-striped">
+        <div class="container">
+            <!-- Three columns of text below the carousel -->
+            <div class="row">
+                <div class="col-lg-4">
+                    <h2 class="heading">Proven Foundation</h2>
+
+                    <p>The Framework is build on top of several device detection libraries, giving you the choice to
+                        decide which library
+                        fits best your project! There is nothing to code, every library is already included and works
+                        out of the box.</p>
+                    <img class="img-responsive center-block" src="{{# img }}icon_allInOne.png{{/ img }}"
+                         alt="Proven Foundation">
+                </div>
+                <div class="col-lg-4">
+                    <h2 class="heading">Performance</h2>
+
+                    <p>With server-side enhancements, significant performance improvements are possible. The Framework
+                        optimizes your
+                        images, gives you the possiblity to define device specific partials and minifies your CSS and
+                        JavaScript files.</p>
+                    <img class="img-responsive center-block" src="{{# img }}icon_performance.png{{/ img }}"
+                         alt="Performance">
+                </div>
+                <div class="col-lg-4">
+                    <h2 class="heading">Flexibility</h2>
+
+                    <p>Composer makes it easy to switch, update or add new third-party packages to your Web application.
+                        You would like to use Foundation instead of Bootstrap? No Problem! Find packages and use them in
+                        seconds.</p>
+                    <img class="img-responsive center-block" src="{{# img }}icon_flexibility.png{{/ img }}"
+                         alt="Flexibility">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- About Section -->
+        <h2 class="heading" id="about">About the RESPOND Framework</h2>
+        <hr>
+        <p>
+            This website is a live demo that introduces the different technologies and advantages of the Responsive Web
+            Design + Server Side Component (RESS) Framework. By using the requesting browser's User Agent information,
+            a responsive website with device specific partials that match the browser's features is rendered
+            server-side. The Framework uses a server-side Device Detection library
+            to extract the device information from the User Agent. If the browser supports JavaScript and Cookies, the
+            detected information is compared with a client-side device and
+            resolution-check. This compared information is stored in a Cookie and is updated if the size of a window or
+            the orientation of a device is changed. Based on the stored information,
+            device specific partials and resolution optimized images can be delivered.<br>
+            <br>The Framework uses three main techniques, based on the detected device information:
+        </p>
+        <ol class="space">
+            <li><strong>Real Responsive Images:</strong> The Framework delivers device appropriate re-scaled versions of
+                your images, based on the detected resolution. A device with
+                a small screen will get a smaller image, a device with a larger screen gets larger images. See the <a
+                        href="#example">Examples</a> below.
+            </li>
+            <li><strong>Device Specific Partials:</strong> Different page components are only required on a mobile site
+                and others on it's desktop version. This Website uses the Mustache Template Engine
+                to define and deliver different partials for different device classes.
+            </li>
+            <li><strong>Minify CSS and JavaScript:</strong> Minify your defined CSS and JavaScript files automatically
+                by simply calling the <a href="minify.php">Minifier</a> page of the Framework.
+
+            </li>
+        </ol>
+        <p>
+            Try to resize the window and see how it all works! You will realize that the website is reloaded at two
+            breakpoints.
+            This breakpoints simulate the transition from desktop to tablet and from tablet to mobile view. At this
+            points, the device specific partials are switched. This automated reloading is only required to
+            simulate and test the tablet and mobile appearance on a desktop monitor. On mobile devices, only the device
+            specific partials are loaded and no automated reloading is triggered.
+        </p>
+
+        <!-- Capability Table -->
+        <h2 class="heading">Device Detection</h2>
+        <hr>
+        <p>This Information is currently detected by the Framework:</p>
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Capability</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Device Information Cookie</td>
+                <td>{{ cookieAvailable }}</td>
+            </tr>
+            <tr>
+                <td>Detected Device Class</td>
+                <td>{{ DeviceClass }}</td>
+            </tr>
+            <tr>
+                <td>Detected Screen Width</td>
+                <td>{{ ScreenWidth }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+
+        <!-- Example Section -->
+
+        <h2 class="heading" id="example">Examples</h2>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-md-7">
+                <h2 class="heading feature">Resolution optimized Images</h2>
+
+                <p>The Framework delivers device appropriate re-scaled versions of your images, based on the detected
+                    resolution. A device with a small screen will get a smaller image, a device with a larger screen
+                    gets larger images. You can see the current resolution below the image.</p>
+
+                <p>You don't have to remember the paths to your images anymore. Use the <b>following simple Mustache
+                    snippet</b> to pass the file name to the Server.
+                    The Server detects the resolution of the screen and looks for a matching image. If there is one, the
+                    path to the image is returned.
+                    If not, the large version of the image is re-scaled, optimized and stored in the appropriate folder.
+                </p>
+
+
+                <code class="language-html" data-lang="html">
+                    <span>&lt;img src=" &#123;&#123;# img &#125;&#125;example.jpg&#123;&#123;/ img &#125;&#125; "&gt;</span>
+                </code>
+
+            </div>
+            <div class="col-md-5">
+                <!-- use img function to deliver image in optimal resolution -->
+                <img class="img-responsive showResolution" alt="ImageName" src="{{# img }}example_1.jpg{{/ img }}">
+                <span class="description">Current Image Resolution: </span>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-md-7">
+                <img class="img-responsive showResolution" alt="ImageName" src="{{# img }}example_2.jpg{{/ img }}">
+                <span class="description">Current Image Resolution: </span>
+            </div>
+            <div class="col-md-5">
+                <h2 class="heading feature">Images are re-scaled and swapped automatically <span class="text-muted">- See for yourself</span>
+                </h2>
+
+                <p>Try to resize the window
+                    and reload the site at different sizes to see how the images are switched an optimized
+                    automatically.</p>
+                <span class="text-muted">Credits: <a target="_blank" href="http://deathtothestockphoto.com/">Death to
+                    the Stock Photo</a></span>
+            </div>
+        </div>
+
+        <hr>
+
+        <h2 class="heading">Device Specific Partials</h2>
+
+        <p>The Framework
+            detects the accessing device and includes
+            the matching partials into your layout. With this approach, it's possible to switch the layout on any
+            device. You think some elements of your site should be optimized or are not needed on a mobile device?
+            No Problem! If the user likes to see the desktop partials on his Smartphone, he can simply switch the
+            version and gets
+            the same content as he would access your website with his notebook or desktop pc.</p>
+        <br>
+
+        <div class="row">
+            <div class="col-md-7">
+                <p>Try to resize the window and watch the RESPOND Logo and the Carousel at the <a href="#">Top</a> of
+                    the page. This elements are implemented with
+                    partials and are switched, based on the accessing device. No more complicated and heavy JavaScript
+                    and CSS optimization.
+                    Implement device specific Partials and include them with the <b>following Mustache tag</b>. </p>
+                <code class="language-html" data-lang="html">
+                    <span>&#123;&#123;> Partial &#125;&#125;</span>
+                </code>
+            </div>
+            <div class="col-md-5">
+                {{> demo }}
+            </div>
+        </div>
+        <br>
+        <hr>
+
+        <h2 class="heading">Don't let tables break your responsive layout anymore</h2>
+
+        <p>This is a demo table that contains information about the current implemented server-side device detection
+            libraries.
+            Try to resize the
+            window and watch the table transform into a mobile friendly and usable layout.</p><br>
+
+        {{> table }}
+
+        <br>
+
+        <!-- Youtube Video Partial Demo -->
+
+        {{> video }}
+
+        <!-- Download Section -->
+
+        <h2 class="heading" id="download">Get the Framework on Github</h2>
+        <hr>
+        <br>
+
+        <div class="getIt">
+            <a class="download" target="_blank" href="https://github.com/kopfwerkstatt/RESPOND">Download RESPOND</a>
+        </div>
+    </div>
+
+
+</section>
+
+<hr>
+
+<!-- Footer Section -->
+<footer id="footer">
+    <div class="container">
+        <p class="pull-right"><a href="#"><span class="glyphicon glyphicon-chevron-up"></span>&nbsp;Back to top</a></p>
+
+        <p>&copy; <span id="year"></span> RESPOND &middot; Switch partials manually:
+            {{> footer }}
+        </p>
+    </div>
+</footer>
+
+<!-- JavaScript placed at the end of the document so the pages load faster
+====================================================================== -->
+<!-- include JavaScript from assets directory -->
+{{> script }}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        /* Display current Image Size */
+        $('img.showResolution').fadeIn(function () {
+            var $this = $(this);
+            $this.one("load", function () {
+                var newImg = new Image();
+                newImg.src = $this.attr('src');
+                var height = newImg.height;
+                var width = newImg.width;
+                $this.next('.description').append(width + ' x ' + height);
+            });
+        });
+        /* Display current Year */
+        $('#year').append(new Date().getFullYear());
+    });
+
+    $('.video').on('click', function () {
+        $(this).html('<iframe width="992" height="400" src="https://www.youtube.com/embed/oK09n_PGhTo?autoplay=1" allowfullscreen></iframe>');
+    });
+</script>
+
+</body>
+
+</html>

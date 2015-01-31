@@ -1,0 +1,16 @@
+{
+	"name": "RWDSUX",
+	"description": "The Responsive Web Framework For Device Specific UX.",
+	"keywords": ["framework", "responsive webdesign", "user experience"],
+	"license": "MIT",
+	"require": {
+		"twitter/bootstrap": "*",
+        	"mustache/mustache": "*",
+		"components/jquery": "*",
+		"matthiasmullie/minify": "*"
+	},
+	"config": {
+		"preferred-install": "dist"
+	},
+	"minimum-stability": "stable"
+}
