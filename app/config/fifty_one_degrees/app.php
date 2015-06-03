@@ -24,7 +24,7 @@ class Fifty_One_Degrees
         $this->config['51_DEGREES_CLIENT_FILE'] = $this->config['51_DEGREES_LIB_DIR'] . '51Degrees.php';
         $this->config['51_DEGREES_USAGE_FILE'] = $this->config['51_DEGREES_LIB_DIR'] . '51Degrees_usage.php';
 
-        require BASE_PATH . "/configuration.php";
+        require CONFIGURATION_DIR . "/configuration.php";
         $this->fallback = $fallback_view;
     }
 

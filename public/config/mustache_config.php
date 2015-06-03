@@ -36,6 +36,9 @@ $data = array(
     'ScreenWidth'  =>  function () {
                                 return getDeviceInformationScreenWidth();
                             },
+    'Bandwidth'    =>  function () {
+                                return getDeviceInformationBandwidth();
+                            },
     'img'              =>  function ($filename) {
                                 return img($filename);
                             },

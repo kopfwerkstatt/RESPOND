@@ -39,7 +39,7 @@ class Wurfl_Cloud
         $this->config['WURFL_CLOUD_CLIENT_DIR'] = $this->config['WURFL_CLOUD_LIB_DIR'] . 'Client/';
         $this->config['WURFL_CLOUD_CLIENT_FILE'] = $this->config['WURFL_CLOUD_CLIENT_DIR'] . 'Client.php';
 
-        require BASE_PATH . "/configuration.php";
+        require CONFIGURATION_DIR . "/configuration.php";
         //echo $wurfl_cloud_api_key;
         $this->api_key = $wurfl_cloud_api_key;
         $this->fallback = $fallback_view;
@@ -83,17 +83,17 @@ class Wurfl_Cloud
 
         // Use the capabilities
         if ($this->wurfl_client->getDeviceCapability('is_tablet')) {
-            // Dispatch HTTP request to desktop view
+            // Dispatch HTTP request to tablet view
             return array('device' => 'tablet', 'screen_width' => $width);
 
         } else {
             if ($this->wurfl_client->getDeviceCapability('is_wireless_device')) {
-                // Dispatch HTTP request to tablet view
+                // Dispatch HTTP request to mobile view
                 return array('device' => 'mobile', 'screen_width' => $width);
 
             } else {
                 if ($this->wurfl_client->getDeviceCapability('ux_full_desktop')) {
-                    // time to handle mobile devices
+                    // time to handle desktop devices
                     return array('device' => 'desktop', 'screen_width' => $width);
 
                 } else {

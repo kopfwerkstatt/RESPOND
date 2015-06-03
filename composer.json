@@ -1,7 +1,7 @@
 {
-	"name": "RWDSUX",
-	"description": "The Responsive Web Framework For Device Specific UX.",
-	"keywords": ["framework", "responsive webdesign", "user experience"],
+	"name": "RESPOND",
+	"description": "RESPOND - a Responsive Web Framework for Device Specific UX.",
+	"keywords": ["framework", "responsive web design", "ress", "user experience"],
 	"license": "MIT",
 	"require": {
 		"twitter/bootstrap": "*",

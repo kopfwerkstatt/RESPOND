@@ -181,6 +181,10 @@
                 <td>Detected Screen Width</td>
                 <td>{{ ScreenWidth }}</td>
             </tr>
+            <tr>
+                <td>Detected Bandwidth</td>
+                <td>{{ Bandwidth }}</td>
+            </tr>
             </tbody>
         </table>
 
@@ -333,7 +337,7 @@
         $('#year').append(new Date().getFullYear());
     });
 
-    $('.video').on('click', function () {
+    $('.embeddedVideo').on('click', function () {
         $(this).html('<iframe width="992" height="400" src="https://www.youtube.com/embed/oK09n_PGhTo?autoplay=1" allowfullscreen></iframe>');
     });
 </script>

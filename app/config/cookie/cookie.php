@@ -13,7 +13,7 @@ $clientDeviceInformation = ['screen_width' => '', 'device' => ''];
 $serverDeviceInformation = ['screen_width' => '', 'device' => ''];
 $comparedDeviceInformation = ['Device Detection Library' => $device_detection_library];
 
-// Look for Cookie stored on PageLoad (Client Side)
+// Look for DeviceInformation Cookie stored on PageLoad (Client Side)
 if (isset($_COOKIE['DeviceInformation'])) {
     $cookie = $_COOKIE['DeviceInformation'];
     $GLOBALS['comparedDeviceInformation']['Client Cookie'] = 'available';
@@ -98,16 +98,39 @@ function getDeviceInformationScreenWidth()
 }
 
 // Add Code from Cookie.js File
-function getCookieJS($path_to_wurfl_js, $use_modernizr)
+function getCookieJS($path_to_wurfl_js, $use_modernizr, $use_bandwidth_detection)
 {
     // Add WURFL.js
     $code = '<script type="text/javascript" src="'.$path_to_wurfl_js.'"></script>' . "\n";
+    // Add Cookie Code
+    $code .= '<script type="text/javascript" src="'. '..' .str_replace(BASE_PATH, "",  CONFIGURATION_DIR . 'cookie/cookie.js').'"></script>' . "\n";
+    // Add Bandwidth Detection
+    if($use_bandwidth_detection) {
+        $code .= '<script type="text/javascript" src="'. '..' .str_replace(BASE_PATH, "",  CONFIGURATION_DIR . 'cookie/bandwidth.js').'"></script>' . "\n";
+    }
     // Add Modernizr
     if($use_modernizr) {
         $code .= '<script type="text/javascript" src="'. '..' .str_replace(BASE_PATH, "", LIBRARIES_DIR . 'JS/modernizr.min.js').'"></script>' . "\n";
     }
-    // Add Cookie Code
-    $code .= '<script type="text/javascript" src="'. '..' .str_replace(BASE_PATH, "",  CONFIGURATION_DIR . 'cookie/cookie.js').'"></script>' . "\n";
     return $code;
 }
 
+// Code for Bandwidth Detection
+// Look for a Bandwidth Cookie stored on PageLoad (Client Side) and explode Information
+if($use_bandwidth_detection) {
+    $bandwidth = [];
+    if (isset($_COOKIE['Bandwidth'])) {
+        $bandwidth = $_COOKIE['Bandwidth'];
+    }
+}
+
+// return detected Bandwidth
+function getDeviceInformationBandwidth() {
+    if(!$GLOBALS['use_bandwidth_detection']) {
+        return 'not active';
+    } else if($GLOBALS['use_bandwidth_detection'] && $GLOBALS['bandwidth'] == 'low' || $GLOBALS['use_bandwidth_detection'] && $GLOBALS['bandwidth'] == 'high') {
+        return $GLOBALS['bandwidth'];
+    } else {
+        return 'not available';
+    }
+}

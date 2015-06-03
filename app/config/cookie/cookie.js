@@ -263,4 +263,3 @@ function unloadP() {
     COOKIE.setCookie(sPage + 'x', s[0], 0.1);
     COOKIE.setCookie(sPage + 'y', s[1], 0.1);
 }
-

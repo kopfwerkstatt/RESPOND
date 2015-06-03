@@ -16,7 +16,7 @@ define ("ASSETS_DIR", BASE_PATH . '/assets' . '/');
 /*
  * include Configuration
  */
-include BASE_PATH . "/configuration.php";
+include "configuration.php";
 
 /*
  * Development Mode
@@ -62,14 +62,22 @@ function getDDLobject($library)
 // Initialize Cookie Storage
 require_once 'cookie/cookie.php';
 function addCookieJS() {
-    return getCookieJS($GLOBALS['path_to_wurfl_js'], $GLOBALS['use_modernizr']);
+    return getCookieJS($GLOBALS['path_to_wurfl_js'], $GLOBALS['use_modernizr'], $GLOBALS['use_bandwidth_detection']);
 }
 
 // Initialize Image Resize
 require_once CONFIGURATION_DIR . 'images/app.php';
 $IMGObject = new Images();
 $IMGObject->setResolutions($image_resolutions);
-$IMGObject->setScreenWidth($comparedDeviceInformation['Screen Width']);
+
+// Bandwidth Detection
+if(isset($bandwidth) && $bandwidth == 'low') {
+    // Load small Images
+    $IMGObject->setScreenWidth(320);
+} else {
+    // Load Images based on Resolution of Device
+    $IMGObject->setScreenWidth($comparedDeviceInformation['Screen Width']);
+}
 
 /*
  * Wrapper Methods for assets:

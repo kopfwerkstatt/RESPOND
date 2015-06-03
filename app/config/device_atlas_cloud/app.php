@@ -28,7 +28,7 @@ class Device_Atlas_Cloud
         $this->config['DEVICE_ATLAS_CLOUD_LIB_DIR'] = LIBRARIES_DIR . 'DeviceAtlasCloud/';
         $this->config['DEVICE_ATLAS_CLOUD_CLIENT_FILE'] = $this->config['DEVICE_ATLAS_CLOUD_LIB_DIR'] . 'Client.php';
 
-        require BASE_PATH . "/configuration.php";
+        require CONFIGURATION_DIR . "/configuration.php";
         $this->fallback = $fallback_view;
     }
 

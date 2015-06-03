@@ -37,7 +37,7 @@ class Detector_Beta
         $this->config['MOD_NAME'] = 'detector/';
         $this->config['DETECTOR_API_DIR'] = LIBRARIES_DIR . 'detector/';
 
-        require BASE_PATH . "/configuration.php";
+        require CONFIGURATION_DIR . "/configuration.php";
         $this->fallback = $fallback_view;
     }
 

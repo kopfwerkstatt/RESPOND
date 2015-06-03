@@ -42,7 +42,7 @@ class Wurfl_Onsite
         $this->config['WURFL_CACHE_DIR'] = $this->config['WURFL_STORAGE_DIR'] . 'cache/';
         $this->config['WURFL_PERSISTENCE_DIR'] = $this->config['WURFL_STORAGE_DIR'] . 'persistence/';
 
-        require BASE_PATH . "/configuration.php";
+        require CONFIGURATION_DIR . "/configuration.php";
         $this->fallback = $fallback_view;
     }
 
@@ -86,7 +86,7 @@ class Wurfl_Onsite
             }
         }
 
-        // Note that in the PHP API, all capability values are strings, so you will need to compare them to strings
+        // All capability values are strings, so you will need to compare them to strings
         if ($this->wurfl_device->getCapability('is_tablet') == 'true') {
             // Dispatch HTTP request to tablet view
             return array('device' => 'tablet', 'screen_width' => $width);
